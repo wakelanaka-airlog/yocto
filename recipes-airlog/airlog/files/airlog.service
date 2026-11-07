@@ -1,8 +1,10 @@
 [Unit]
 Description=Starts airlog
-After=weston.service
+After=weston.service network-online.target
+Wants=network-online.target
 Requires=weston.service
 BindsTo=weston.service
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
@@ -12,16 +14,14 @@ Group=root
 Environment=XDG_RUNTIME_DIR=/run
 Environment=WAYLAND_DISPLAY=wayland-0
 Environment=QT_QPA_PLATFORM=wayland
-
+EnvironmentFile=-/etc/airlog/env
 
 ExecStartPre=/bin/sh -c 'until [ -S $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY ]; do sleep 0.1; done'
-ExecStart=/usr/bin/airlog
+ExecStart=/usr/bin/dashboard_app
 WorkingDirectory=/usr/bin
 
 Restart=always
 RestartSec=5
-
-StartLimitIntervalSec=0
 
 [Install]
 WantedBy=multi-user.target
