@@ -15,7 +15,8 @@ Supported Yocto release: **scarthgap** (`LAYERSERIES_COMPAT_meta-airlog`).
 
 ## 📸 Preview
 
-![AirLog Display](meta-airlog/img/Airlog_display.png)
+![AirLog Dashboard](meta-airlog/img/Airlog_dashboard.png)
+![AirLog History](meta-airlog/img/Airlog_history.png)
 
 ---
 
